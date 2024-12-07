@@ -1,9 +1,10 @@
 <h1>Welcome to {{ hotelName }}</h1>
-
-
 <div [hidden]="hideRooms">
-    Number of rooms:
-  <div [innerText]="numberOfRooms"></div>
+  Number of rooms: {{numberOfRooms}}
 </div>
-
 <button (click)="toggle()">Toggle</button>
+
+<!-- Navigation button -->
+<div>
+  <button routerLink="/rooms/list">View Rooms List</button>
+</div>

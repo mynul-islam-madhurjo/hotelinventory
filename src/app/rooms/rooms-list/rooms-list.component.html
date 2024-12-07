@@ -1,0 +1,23 @@
+<div class="rooms-list">
+  <h2>Rooms List</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Room Number</th>
+      <th>Room Type</th>
+      <th>Price</th>
+      <th>Amenities</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let room of rooms">
+      <td>{{room.roomNumber}}</td>
+      <td>{{room.roomType}}</td>
+      <td>{{room.price | currency}}</td>
+      <td>{{room.amenities}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <button routerLink="/rooms">Back to Rooms</button>
+</div>
