@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Room, RoomList } from './rooms';
+import { Room, RoomList } from '../rooms/rooms';
 
 @Injectable({
   providedIn: 'root'

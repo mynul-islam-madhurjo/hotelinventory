@@ -1,7 +1,10 @@
-<div class="container">
-  <nav>
-    <a routerLink="/rooms">Rooms Home</a>
-    <a routerLink="/rooms/list">Rooms List</a>
+<div class="app-container">
+  <nav class="main-nav" *ngIf="authService.isAuthenticated()">
+    <div class="nav-links">
+      <a routerLink="/rooms" routerLinkActive="active">Rooms Home</a>
+      <a routerLink="/rooms/list" routerLinkActive="active">Rooms List</a>
+    </div>
+    <button class="logout-btn" (click)="logout()">Logout</button>
   </nav>
 
   <router-outlet></router-outlet>
