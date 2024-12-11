@@ -1,40 +1,66 @@
 <div class="login-container">
   <div class="login-card">
     <h2>Hotel Admin Login</h2>
-    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <!-- Username Field -->
       <div class="form-group">
         <label for="username">Username</label>
         <input
-          type="text"
           id="username"
-          [(ngModel)]="username"
-          name="username"
-          required
-          #usernameInput="ngModel">
-        <div *ngIf="usernameInput.invalid && usernameInput.touched" class="error">
-          Username is required
+          type="text"
+          formControlName="username">
+
+        <!-- Username Validation Messages -->
+        <div class="error-container" *ngIf="loginForm.get('username')?.touched">
+          <small class="error" *ngIf="loginForm.get('username')?.errors?.['required']">
+            Username is required
+          </small>
+          <small class="error" *ngIf="loginForm.get('username')?.errors?.['minlength']">
+            Username must be at least 4 characters
+          </small>
         </div>
       </div>
 
+      <!-- Password Field -->
       <div class="form-group">
         <label for="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          [(ngModel)]="password"
-          name="password"
-          required
-          #passwordInput="ngModel">
-        <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error">
-          Password is required
+        <div class="password-field">
+          <input
+            id="password"
+            [type]="showPassword ? 'text' : 'password'"
+            formControlName="password">
+          <button
+            type="button"
+            class="toggle-password"
+            (click)="togglePassword()">
+            {{ showPassword ? 'Hide' : 'Show' }}
+          </button>
+        </div>
+
+        <!-- Password Validation Messages -->
+        <div class="error-container" *ngIf="loginForm.get('password')?.touched">
+          <small class="error" *ngIf="loginForm.get('password')?.errors?.['required']">
+            Password is required
+          </small>
+          <small class="error" *ngIf="loginForm.get('password')?.errors?.['minlength']">
+            Password must be at least 6 characters
+          </small>
         </div>
       </div>
 
+      <!-- Error Message -->
       <div *ngIf="loginError" class="error-message">
         Invalid username or password
       </div>
 
-      <button type="submit" [disabled]="loginForm.invalid">Login</button>
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        [disabled]="loginForm.invalid || loginForm.pending"
+        class="submit-btn">
+        {{ loginForm.pending ? 'Logging in...' : 'Login' }}
+      </button>
     </form>
   </div>
 </div>
