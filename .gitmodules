@@ -1,0 +1,3 @@
+[submodule "hotelapi"]
+	path = hotelapi
+	url = https://github.com/mynul-islam-madhurjo/hotelapi
