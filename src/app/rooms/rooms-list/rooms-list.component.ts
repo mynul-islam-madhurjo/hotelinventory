@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { RoomList } from '../rooms';
 import { RoomsService } from '../../services/rooms.service';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-rooms-list',
@@ -8,14 +9,12 @@ import { RoomsService } from '../../services/rooms.service';
   styleUrls: ['rooms-list.component.scss']
 })
 export class RoomsListComponent implements OnInit {
-  rooms: RoomList[] = [];
+  // rooms: RoomList[] = [];
+  @Input() rooms: RoomList[] = [];
 
-  constructor(private roomsService: RoomsService) {}
+  constructor() {}
 
   ngOnInit(): void {
-    // this.rooms = this.roomsService.getRooms();
-    this.roomsService.getRooms().subscribe(room => {
-      this.rooms = room;
-      });
+
   }
 }

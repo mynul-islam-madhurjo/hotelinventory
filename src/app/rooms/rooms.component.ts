@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RoomsService } from '../services/rooms.service';
+import {RoomList} from "./rooms";
 
 @Component({
   selector: 'app-rooms',
@@ -11,9 +12,15 @@ export class RoomsComponent implements OnInit {
   numberOfRooms = 10;
   hideRooms = false;
 
-  constructor() {}
+  roomsList: RoomList[] = [];
+
+  constructor(private roomsService: RoomsService) {}
 
   ngOnInit(): void {
+    // this.rooms = this.roomsService.getRooms();
+    this.roomsService.getRooms().subscribe(room => {
+      this.roomsList= room;
+    });
   }
   toggle() {
     this.hideRooms = !this.hideRooms;
