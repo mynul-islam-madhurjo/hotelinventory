@@ -11,6 +11,6 @@
 
 <ng-container *ngIf="hideRooms">
   <!--Passing child component-->
-  <app-rooms-list [rooms]="roomsList"></app-rooms-list>
+  <app-rooms-list [rooms]="roomsList" (selectedRoom)="selectRoom($event)"></app-rooms-list>
 </ng-container>
 

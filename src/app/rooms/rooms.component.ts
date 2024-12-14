@@ -25,4 +25,8 @@ export class RoomsComponent implements OnInit {
   toggle() {
     this.hideRooms = !this.hideRooms;
   }
+
+  selectRoom(room: RoomList) {
+    console.log(room);
+  }
 }

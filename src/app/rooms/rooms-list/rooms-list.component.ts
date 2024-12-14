@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { RoomList } from '../rooms';
 import { RoomsService } from '../../services/rooms.service';
 import {Observable} from "rxjs";
@@ -11,10 +11,15 @@ import {Observable} from "rxjs";
 export class RoomsListComponent implements OnInit {
   // rooms: RoomList[] = [];
   @Input() rooms: RoomList[] = [];
+  @Output() selectedRoom = new EventEmitter<RoomList>();
 
   constructor() {}
 
   ngOnInit(): void {
 
+  }
+
+  selectRoom(room: RoomList) {
+    this.selectedRoom.emit(room);
   }
 }
